@@ -2,4 +2,4 @@
 
 apache_start.bat&
 mysql_start.bat&
-(php artisan serve > net.log)&
+# (php artisan serve > net.log)&
