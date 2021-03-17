@@ -1,0 +1,4 @@
+/node_modules
+/vendor
+init.sh
+kill.sh
