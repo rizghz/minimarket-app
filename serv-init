@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
-apache_start.bat &
-mysql_start.bat &
+httpd &
+echo " apache service telah berjalan"
+
+mysqld --defaults-file=$MYSQL_CONFIG\\my.ini --standalone &
+echo " mysql service telah berjalan"
+
 (php artisan serve > net.log) &
+echo -e " php dev server telah berjalan\n\n message"
