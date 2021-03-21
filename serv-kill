@@ -12,7 +12,7 @@ if [ -f net.log ]; then
 fi
 
 if [ $PID_PHP ]; then
-    kill $PID_PHP | 2>&1
+    kill $PID_PHP
     if [ $(echo $?) -eq 0 ]; then
         echo " php dev server telah berhenti"
     fi
