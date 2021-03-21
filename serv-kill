@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+
+PID_PHP=$(ps | grep php | awk {'print $1'})
+PID_APACHE=$(ps | grep apache | awk {'print $1'})
+PID_MYSQL=$(ps | grep mysql | awk {'print $1'})
+
+if [ -f net.log ]; then
+    rm net.log
+    if [ $(echo $?) -eq 0 ]; then
+        echo " file net.log telah dihapus"
+    fi
+fi
+
+if [ $PID_PHP ]; then
+    kill $PID_PHP | 2>&1
+    if [ $(echo $?) -eq 0 ]; then
+        echo " php dev server telah berhenti"
+    fi
+fi
+
+if [ $PID_APACHE ]; then
+    kill $PID_APACHE
+    if [ $(echo $?) -eq 0 ]; then
+        echo " apache service telah berhenti"
+    fi
+fi
+
+if [ $PID_MYSQL ]; then
+    kill $PID_MYSQL
+    if [ $(echo $?) -eq 0 ]; then
+        echo " mysql service telah berhenti"
+    fi
+fi
