@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-2>&1
-
 PID_PHP=$(ps | grep php | awk {'print $1'})
 PID_APACHE=$(ps | grep apache | awk {'print $1'})
 PID_MYSQL=$(ps | grep mysql | awk {'print $1'})
