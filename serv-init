@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+2>&1
+
 apache_start.bat &
 mysql_start.bat &
 (php artisan serve > net.log) &
