@@ -4,7 +4,7 @@
     <!-- sidebar header -->
     <div class="sidebar-logo pY-15 border-0">
       <div class="peers ai-c fxw-nw">
-        <div class="peer peer-greed mL-100">
+        <div class="peer peer-greed">
           <a class="sidebar-link td-n" href="index.html">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
@@ -16,7 +16,7 @@
                        style="border: 2px solid white !important;">
                 </div>
               </div>
-              <div class="peer peer-greed">
+              <div class="peer peer-greed mL-20">
                 <h5 class="lh-1 mB-0 logo-text text-white">MINI MARKET</h5>
               </div>
             </div>
