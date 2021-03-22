@@ -16,7 +16,7 @@
                        style="border: 2px solid white !important;">
                 </div>
               </div>
-              <div class="peer peer-greed mL-20">
+              <div class="peer peer-greed mL-15">
                 <h5 class="lh-1 mB-0 logo-text text-white">MINI MARKET</h5>
               </div>
             </div>
