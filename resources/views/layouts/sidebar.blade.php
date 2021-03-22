@@ -40,7 +40,7 @@
         <a class="sidebar-link" href="{{ route('home') }}">
           <span class="icon-holder">
             <i class="enigma-orange-text-1 ti-home"></i>
-          </span><span class="title text-white">Home</span>
+          </span><span class="title text-white">test</span>
         </a>
       </li>
       
