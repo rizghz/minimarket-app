@@ -4,7 +4,7 @@
     <!-- sidebar header -->
     <div class="sidebar-logo pY-15 border-0">
       <div class="peers ai-c fxw-nw">
-        <div class="peer peer-greed">
+        <div class="peer peer-greed mL-100">
           <a class="sidebar-link td-n" href="index.html">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
@@ -40,7 +40,7 @@
         <a class="sidebar-link" href="{{ route('home') }}">
           <span class="icon-holder">
             <i class="enigma-orange-text-1 ti-home"></i>
-          </span><span class="title text-white">test</span>
+          </span><span class="title text-white">Home</span>
         </a>
       </li>
       
