@@ -4,7 +4,7 @@
     <!-- sidebar header -->
     <div class="sidebar-logo pY-15 border-0">
       <div class="peers ai-c fxw-nw">
-        <div class="peer peer-greed pl-2">
+        <div class="peer peer-greed ml-2">
           <a class="sidebar-link td-n" href="index.html">
             <div class="peers ai-c fxw-nw">
               <div class="peer">
