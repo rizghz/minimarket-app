@@ -1,10 +1,18 @@
 #!/usr/bin/bash
 
-httpd &
-echo " apache service telah berjalan"
+# cek apakah ada httpd
+if [ -f $XAMPP_PATH/apache/bin/httpd.exe ]; then
+    # jelankan httpd
+    httpd &
+    echo " apache service telah berjalan"
+fi
 
-mysqld --defaults-file=$MYSQL_CONFIG\\my.ini --standalone &
-echo " mysql service telah berjalan"
+# cek apakah ada mysqld
+if [ -f $XAMPP_PATH/mysql/bin/mysqld.exe ]; then
+    # jalankan mysqld
+    mysqld --defaults-file=$MYSQL_CONFIG --standalone --silent-startup &
+    echo " mysql service telah berjalan"
+fi
 
 (php artisan serve > net.log) &
-echo -e " php dev server telah berjalan\n\n message"
+echo -e " php dev server telah berjalan"

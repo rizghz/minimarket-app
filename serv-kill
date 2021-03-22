@@ -1,33 +1,48 @@
 #!/usr/bin/bash
 
+# dapatkan proses id php dev server
 PID_PHP=$(ps | grep php | awk {'print $1'})
+# dapatkan proses id httpd
 PID_APACHE=$(ps | grep apache | awk {'print $1'})
+# dapatkan proses id mysqld
 PID_MYSQL=$(ps | grep mysql | awk {'print $1'})
 
+# cek apakah ada file net.log
 if [ -f net.log ]; then
+    # hapus file net.log
     rm net.log
+    # output
     if [ $(echo $?) -eq 0 ]; then
-        echo "[] file net.log telah dihapus"
+        echo " file net.log telah dihapus"
     fi
 fi
 
+# cek apakah ada proses php dev server
 if [ $PID_PHP ]; then
+    # hentikan proses php dev server
     kill $PID_PHP
+    # output
     if [ $(echo $?) -eq 0 ]; then
-        echo "[] php dev server telah berhenti"
+        echo " php dev server telah berhenti"
     fi
 fi
 
+# cek apakah ada proses httpd
 if [ $PID_APACHE ]; then
+    # hentikan proses httpd
     kill $PID_APACHE
+    # output
     if [ $(echo $?) -eq 0 ]; then
-        echo "[] apache service telah berhenti"
+        echo " apache service telah berhenti"
     fi
 fi
 
+# cek apakah ada proses mysqld
 if [ $PID_MYSQL ]; then
+    # hentikan proses mysqld
     kill $PID_MYSQL
+    # output
     if [ $(echo $?) -eq 0 ]; then
-        echo "[] mysql service telah berhenti"
+        echo " mysql service telah berhenti"
     fi
 fi
