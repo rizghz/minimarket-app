@@ -2,28 +2,36 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::prefix('admin')->group(function() {
 
-Route::get('/', function () {
-    return view('master.index');
-})->name('home');
+    // home
+    Route::get('home', [IndexController::class, 'index'])
+        ->name('home');
+    
+    // produk
+    Route::resource('produk', ProdukController::class)
+        ->except(['create', 'edit', 'show']);
+    
+    // barang
+    Route::resource('barang', BarangController::class)
+        ->except(['create', 'edit', 'show']);
+    
+    // supplier
+    Route::resource('supplier', SupplierController::class)
+        ->except(['create', 'edit', 'show']);
+    
+    // customer
+    Route::resource('customer', CustomerController::class)
+        ->except(['create', 'edit', 'show']);
+    
+    // user
+    Route::resource('user', UserController::class)
+        ->except(['create', 'edit', 'show']);
 
-Route::resource('produk', ProdukController::class)->except(['create', 'edit', 'show']);
-Route::resource('barang', BarangController::class)->except(['create', 'edit', 'show']);
-Route::resource('supplier', SupplierController::class)->except(['create', 'edit', 'show']);
-Route::resource('customer', CustomerController::class)->except(['create', 'edit', 'show']);
-Route::resource('user', UserController::class)->except(['create', 'edit', 'show']);
+});
