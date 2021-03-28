@@ -31,6 +31,7 @@
         "jvectormap": "^2.0.4",
         "load-google-maps-api": "^1.0.0",
         "masonry-layout": "^4.2.2",
+        "material-components-web": "^10.0.0",
         "perfect-scrollbar": "^1.5.0",
         "popper.js": "^1.16.1",
         "skycons": "^1.0.0"
