@@ -26,9 +26,9 @@ class BarangController extends Controller {
         $request->validate($rules);
         $res = Barang::create($request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
     public function update(Request $request, Barang $barang) {
@@ -44,16 +44,16 @@ class BarangController extends Controller {
         $res = Barang::where('id', $barang->id)->update(
             $request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
     public function destroy(Barang $barang) {
         if (!Barang::destroy($barang->id)) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
 }

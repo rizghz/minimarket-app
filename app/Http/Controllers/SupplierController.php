@@ -25,9 +25,9 @@ class SupplierController extends Controller {
         $request->validate($rules);
         $res = Supplier::create($request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
     public function update(Request $request, Supplier $supplier) {
@@ -42,16 +42,16 @@ class SupplierController extends Controller {
         $res = Supplier::where('id', $supplier->id)->update(
             $request->all(['kode_supplier', 'nama_supplier', 'alamat', 'kota', 'no_telp']));
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
     public function destroy(Supplier $supplier) {
         if (!Supplier::destroy($supplier->id)) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
 }

@@ -21,9 +21,9 @@ class ProdukController extends Controller {
         $request->validate($rules);
         $res = Produk::create($request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
     public function update(Request $request, Produk $produk) {
@@ -34,16 +34,16 @@ class ProdukController extends Controller {
         $res = Produk::where('id', $produk->id)->update(
             $request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
     public function destroy(Produk $produk) {
         if (!Produk::destroy($produk->id)) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
 }

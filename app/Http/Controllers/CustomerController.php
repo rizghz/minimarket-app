@@ -25,9 +25,9 @@ class CustomerController extends Controller {
         $request->validate($rules);
         $res = Customer::create($request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
     public function update(Request $request, Customer $customer) {
@@ -42,16 +42,16 @@ class CustomerController extends Controller {
         $res = Customer::where('id', $customer->id)->update(
             $request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
     public function destroy(Customer $customer) {
         if (!Customer::destroy($customer->id)) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
 }

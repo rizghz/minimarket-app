@@ -20,9 +20,9 @@ class UserController extends Controller {
         $request->validate($rules);
         $res = User::create($request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
     
     public function update(Request $request, User $user) {
@@ -32,16 +32,16 @@ class UserController extends Controller {
         $res = User::where('id', $user->id)->update(
             $request->all());
         if (!$res) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
     public function destroy(User $user) {
         if (!User::destroy($user->id)) {
-            return "failed";
+            return 0;
         }
-        return "success";
+        return 1;
     }
 
 }
