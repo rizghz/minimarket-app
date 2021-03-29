@@ -40,7 +40,7 @@ class SupplierController extends Controller {
         ];
         $request->validate($rules);
         $res = Supplier::where('id', $supplier->id)->update(
-            $request->all());
+            $request->all(['kode_supplier', 'nama_supplier', 'alamat', 'kota', 'no_telp']));
         if (!$res) {
             return "failed";
         }
