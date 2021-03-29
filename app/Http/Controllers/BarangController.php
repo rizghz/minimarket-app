@@ -2,83 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('master.barang.index');
+class BarangController extends Controller {
+    
+    public function __construct() { }
+
+    public function index() {
+        $data = Barang::all();
+        return view('master.barang.index', ['data' => $data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function store(Request $request) {
+        $rules = [
+            'kode_barang' => 'required|unique:barang',
+            'produk_id' => 'required',
+            'nama' => 'required',
+            'satuan' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required'
+        ];
+        $request->validate($rules);
+        $res = Barang::create($request->all());
+        if (!$res) {
+            return "failed";
+        }
+        return "success";
+    }
+    
+    public function update(Request $request, Barang $barang) {
+        $rules = [
+            'kode_barang' => 'required',
+            'produk_id' => 'required',
+            'nama' => 'required',
+            'satuan' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required'
+        ];
+        $request->validate($rules);
+        $res = Barang::where('id', $barang->id)->update(
+            $request->all());
+        if (!$res) {
+            return "failed";
+        }
+        return "success";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function destroy(Barang $barang) {
+        if (!Barang::destroy($barang->id)) {
+            return "failed";
+        }
+        return "success";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

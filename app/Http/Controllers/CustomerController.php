@@ -2,83 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class CustomerController extends Controller {
+    
+    public function __construct() { }
+
+    public function index() {
+        $data = Customer::all();
+        return view('master.customer.index', ['data' => $data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function store(Request $request) {
+        $rules = [
+            'kode_customer' => 'required|unique:customer',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required'
+        ];
+        $request->validate($rules);
+        $res = Customer::create($request->all());
+        if (!$res) {
+            return "failed";
+        }
+        return "success";
+    }
+    
+    public function update(Request $request, Customer $customer) {
+        $rules = [
+            'kode_customer' => 'required|unique:customer',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required'
+        ];
+        $request->validate($rules);
+        $res = Customer::where('id', $customer->id)->update(
+            $request->all());
+        if (!$res) {
+            return "failed";
+        }
+        return "success";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function destroy(Customer $customer) {
+        if (!Customer::destroy($customer->id)) {
+            return "failed";
+        }
+        return "success";
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
