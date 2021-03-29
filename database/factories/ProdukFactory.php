@@ -5,13 +5,14 @@ namespace Database\Factories;
 use App\Models\Produk;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProdukFactory extends Factory
-{
+class ProdukFactory extends Factory {
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
+
     protected $model = Produk::class;
 
     /**
@@ -19,10 +20,11 @@ class ProdukFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+
+    public function definition() {
         return [
             'nama' => $this->faker->word()
         ];
     }
+
 }

@@ -5,13 +5,14 @@ namespace Database\Factories;
 use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SupplierFactory extends Factory
-{
+class SupplierFactory extends Factory {
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
+
     protected $model = Supplier::class;
 
     /**
@@ -19,14 +20,15 @@ class SupplierFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+
+    public function definition() {
         return [
-            'kode_supplier' => $this->faker->numberBetween(1000, 100000),
-            'nama_supplier' => $this->faker->company,
+            'kode' => $this->faker->numberBetween(1000, 100000),
+            'nama' => $this->faker->company,
             'alamat' => $this->faker->address,
             'kota' => $this->faker->city,
             'no_telp' => $this->faker->phoneNumber
         ];
     }
+
 }

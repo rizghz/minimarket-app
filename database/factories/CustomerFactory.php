@@ -5,13 +5,14 @@ namespace Database\Factories;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CustomerFactory extends Factory
-{
+class CustomerFactory extends Factory {
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
+
     protected $model = Customer::class;
 
     /**
@@ -19,10 +20,15 @@ class CustomerFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+
+    public function definition() {
         return [
-            //
+            'kode' => $this->faker->numberBetween(1, 99999),
+            'nama' => $this->faker->company,
+            'alamat' => $this->faker->address,
+            'no_telp' => $this->faker->phoneNumber,
+            'email' => $this->faker->email
         ];
     }
+
 }

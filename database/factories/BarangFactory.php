@@ -6,13 +6,14 @@ use App\Models\Barang;
 use App\Models\Produk;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BarangFactory extends Factory
-{
+class BarangFactory extends Factory {
+    
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
+
     protected $model = Barang::class;
 
     /**
@@ -20,10 +21,10 @@ class BarangFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+
+    public function definition() {
         return [
-            'kode_barang' => sprintf('K%08d', $this->faker->unique()->numberBetween(1, 99999999)),
+            'kode' => sprintf('K%08d', $this->faker->unique()->numberBetween(1, 99999999)),
             'produk_id' => $this->faker->randomElement(Produk::all('id')),
             'nama' => $this->faker->randomElement(['Mie Sedap Ayam Bawang', 'Sabun Lifeboy']),
             'satuan' => $this->faker->randomElement(['pcs', 'item', 'pack']),
@@ -31,4 +32,5 @@ class BarangFactory extends Factory
             'stok' => $this->faker->numberBetween(1, 100)
         ];
     }
+
 }
