@@ -21,7 +21,7 @@ class Barang extends Model {
     ];
 
     public function produk() {
-        return $this->hasOne(Produk::class, 'id', 'produk_id');
+        return $this->belongsTo(Produk::class);
     }
 
 }

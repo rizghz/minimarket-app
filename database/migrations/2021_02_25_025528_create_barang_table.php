@@ -4,23 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBarangTable extends Migration
-{
+class CreateBarangTable extends Migration {
+    
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+
+    public function up() {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_barang');
+            $table->string('kode');
             $table->foreignId('produk_id');
             $table->string('nama');
-            $table->string('satuan', 10);
+            $table->string('satuan');
             $table->unsignedBigInteger('harga_jual');
-            $table->string('stok', 3);
+            $table->unsignedSmallInteger('stok');
             $table->timestamps();
         });
     }
@@ -30,8 +30,9 @@ class CreateBarangTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+
+    public function down() {
         Schema::dropIfExists('barang');
     }
+
 }
