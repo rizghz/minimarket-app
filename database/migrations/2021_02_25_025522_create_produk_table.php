@@ -17,6 +17,8 @@ class CreateProdukTable extends Migration {
             $table->id();
             $table->foreignId('barang_id');
             $table->string('nama');
+            $table->unsignedBigInteger('harga_jual');
+            $table->unsignedSmallInteger('stok');
             $table->timestamps();
         });
     }

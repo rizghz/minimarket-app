@@ -18,8 +18,6 @@ class CreateBarangTable extends Migration {
             $table->string('kode');
             $table->string('nama');
             $table->string('satuan');
-            $table->unsignedBigInteger('harga_jual');
-            $table->unsignedSmallInteger('stok');
             $table->timestamps();
         });
     }
