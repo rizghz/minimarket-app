@@ -34,6 +34,7 @@
         "material-components-web": "^10.0.0",
         "perfect-scrollbar": "^1.5.0",
         "popper.js": "^1.16.1",
-        "skycons": "^1.0.0"
+        "skycons": "^1.0.0",
+        "sweetalert2": "^10.15.7"
     }
 }
