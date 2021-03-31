@@ -119,6 +119,13 @@
         }).always(function(a, b, c) { console.log(c); });
         return buffer;
       };
+      const sweetalert = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success mx-1',
+          cancelButton: 'btn btn-danger mx-1'
+        },
+        buttonsStyling: false
+      });
     </script>
     @stack('script')
     
