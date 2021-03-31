@@ -14,10 +14,10 @@ class AddForeign extends Migration {
 
     public function up() {
         
-        Schema::table('barang', function (Blueprint $table) {
+        Schema::table('produk', function (Blueprint $table) {
             
-            /* table barang -> table produk */
-            $table->foreign('produk_id')->references('id')->on('produk')
+            /* table produk -> table barang */
+            $table->foreign('barang_id')->references('id')->on('barang')
                   ->onUpdate('cascade')->onDelete('cascade');
 
         });
@@ -88,8 +88,8 @@ class AddForeign extends Migration {
 
     public function down() {
 
-        Schema::table('barang', function (Blueprint $table) {
-            $table->dropForeign(['produk_id']);
+        Schema::table('produk', function (Blueprint $table) {
+            $table->dropForeign(['barang_id']);
         });
 
         Schema::table('penjualan', function (Blueprint $table) {
