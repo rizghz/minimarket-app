@@ -13,7 +13,9 @@ class Produk extends Model {
 
     protected $fillable = [
         'barang_id',
-        'nama'
+        'nama',
+        'harga_jual',
+        'stok'
     ];
 
     public function barang() {
