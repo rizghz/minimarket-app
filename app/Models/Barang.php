@@ -13,15 +13,10 @@ class Barang extends Model {
 
     protected $fillable = [
         'kode',
-        'produk_id',
         'nama',
         'satuan',
         'harga_jual',
         'stok'
     ];
-
-    public function produk() {
-        return $this->belongsTo(Produk::class);
-    }
 
 }

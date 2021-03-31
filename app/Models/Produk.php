@@ -12,7 +12,12 @@ class Produk extends Model {
     protected $table = 'produk';
 
     protected $fillable = [
+        'barang_id',
         'nama'
     ];
+
+    public function barang() {
+        return $this->belongsTo(Barang::class);
+    }
 
 }
