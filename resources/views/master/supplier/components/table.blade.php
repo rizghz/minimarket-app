@@ -24,11 +24,11 @@
         </td>
         
         <td class="py-2 border-0">
-          <div class="py-1">{{ $item->kode_supplier }}</div>
+          <div class="py-1">{{ $item->kode }}</div>
         </td>
         
         <td class="py-2 border-0">
-          <div class="py-1">{{ $item->nama_supplier }}</div>
+          <div class="py-1">{{ $item->nama }}</div>
         </td>
         
         <td class="py-2 border-0">
@@ -43,8 +43,8 @@
           
           <button class="btn enigma-dark-bg-3 btn-sm my-0 mx-0 mr-1 px-2 py-1 rounded update-trigger"
              data-id="{{ $item->id }}"
-             data-kode_supplier="{{ $item->kode_supplier }}"
-             data-nama_supplier="{{ $item->nama_supplier }}"
+             data-kode="{{ $item->kode }}"
+             data-nama="{{ $item->nama }}"
              data-alamat="{{ $item->alamat }}"
              data-kota="{{ $item->kota }}"
              data-no_telp="{{ $item->no_telp }}"

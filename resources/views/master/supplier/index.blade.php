@@ -40,12 +40,14 @@
     let formTambah = $('#form-supplier-tambah').find('.form-control.input');
     let formUpdate = $('#form-supplier-update').find('.form-control.input');
     let dataId = "";
+    
     $('body').on('click', '.tambah-trigger', function(e) {
       e.preventDefault();
       for (let i = 0; i < formTambah.length; i++) {
         formTambah.eq(i).val(null).trigger('change');
       }
     });
+    
     $('body').on('click', '.update-trigger', function(e) {
       e.preventDefault();
       let data = $(this).data();
@@ -54,6 +56,7 @@
         formUpdate.eq(i).val(data[formUpdate.eq(i).attr('name')]).trigger('change');
       }
     });
+    
     $('body').on('click', '#btn-submit', function(e) {
       e.preventDefault();
       let form = $($(this).data('form'));
@@ -73,6 +76,16 @@
         }
       }
     });
+
+    $('body').on('click', '.delete-trigger', function(e) {
+      e.preventDefault();
+      let csrf = $(`@csrf`);
+      let route = "{{ route('supplier.index') }}";
+      dataId = $(this).data('id');
+      let res = request(`${route}/${dataId}`, 'delete', csrf.serialize());
+      location.reload();
+    });
+
   });
 
   let table = $('table').DataTable({

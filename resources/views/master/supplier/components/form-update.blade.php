@@ -9,7 +9,7 @@
 
   <!-- form kode supplier -->
   <div class="form-group row">
-    <label for="kode_supplier" class="col-sm-3 col-form-label text-md-right text-white">Kode Supplier</label>
+    <label for="kode" class="col-sm-3 col-form-label text-md-right text-white">Kode Supplier</label>
     <div class="col-sm-8">
       <div class="input-group">
         <div class="input-group-prepend">
@@ -18,20 +18,20 @@
           </span>
         </div>
         <input type="text" class="form-control input text-white border-0" 
-               id="kode_supplier"
-               name="kode_supplier" 
+               id="kode"
+               name="kode" 
                style="background-color: #3B4252" 
-               placeholder="kode supplier" 
+               placeholder="kode" 
                autocomplete="off">
       </div>
-      <div id="invalid-feedback-kode_supplier" class="invalid alert-text text-sm pt-2"></div>
+      <div id="invalid-feedback-kode" class="invalid alert-text text-sm pt-2"></div>
     </div>
   </div>
   <!-- akhir form kode supplier -->
 
   <!-- form nama supplier -->
   <div class="form-group row">
-    <label for="nama_supplier" class="col-sm-3 col-form-label text-md-right text-white">Nama Supplier</label>
+    <label for="nama" class="col-sm-3 col-form-label text-md-right text-white">Nama Supplier</label>
     <div class="col-sm-8">
       <div class="input-group">
         <div class="input-group-prepend">
@@ -40,13 +40,13 @@
           </span>
         </div>
         <input type="text" class="form-control input text-white border-0" 
-              id="nama_supplier"
-              name="nama_supplier" 
+              id="nama"
+              name="nama" 
               style="background-color: #3B4252"
-              placeholder="nama supplier" 
+              placeholder="nama" 
               autocomplete="off">
       </div>
-      <div id="invalid-feedback-nama_supplier" class="invalid alert-text text-sm pt-2"></div>
+      <div id="invalid-feedback-nama" class="invalid alert-text text-sm pt-2"></div>
     </div>
   </div>
   <!-- akhir form nama supplier -->
