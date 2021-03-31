@@ -5,10 +5,8 @@
   <thead>
     <tr>
       <th data-orderable="false" class="pl-4 border-0">No</th>
-      <th data-orderable="false" class="border-0">Produk</th>
+      <th data-orderable="false" class="border-0">Kode</th>
       <th data-orderable="false" class="border-0">Nama</th>
-      <th data-orderable="false" class="border-0">Harga Jual</th>
-      <th data-orderable="false" class="border-0">Stok</th>
       <th data-orderable="false" class="border-0">Satuan</th>
       <th data-orderable="false" class="border-0"></th>
     </tr>
@@ -25,19 +23,11 @@
         </td>
         
         <td class="py-2 border-0">
-          <div class="py-1">{{ $item->produk->nama }}</div>
+          <div class="py-1">{{ $item->kode }}</div>
         </td>
         
         <td class="py-2 border-0">
           <div class="py-1">{{ $item->nama }}</div>
-        </td>
-        
-        <td class="py-2 border-0">
-          <div class="py-1">{{ $item->harga_jual }}</div>
-        </td>
-        
-        <td class="py-2 border-0">
-          <div class="py-1">{{ $item->stok }}</div>
         </td>
 
         <td class="py-2 border-0">
