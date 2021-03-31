@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,11 @@ class ProdukController extends Controller {
 
     public function index() {
         $data = Produk::all();
-        return view('master.produk.index', ['data' => $data]);
+        $barang = Barang::all(['id', 'nama']);
+        return view('master.produk.index', [
+            'data' => $data,
+            'barang' => $barang
+        ]);
     }
 
     public function store(Request $request) {
