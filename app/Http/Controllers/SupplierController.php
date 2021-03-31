@@ -16,8 +16,8 @@ class SupplierController extends Controller {
 
     public function store(Request $request) {
         $rules = [
-            'kode_supplier' => 'required|unique:supplier',
-            'nama_supplier' => 'required',
+            'kode' => 'required|unique:supplier',
+            'nama' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
             'no_telp' => 'required'
@@ -32,15 +32,18 @@ class SupplierController extends Controller {
     
     public function update(Request $request, Supplier $supplier) {
         $rules = [
-            'kode_supplier' => 'required',
-            'nama_supplier' => 'required',
+            'kode' => 'required',
+            'nama' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
             'no_telp' => 'required'
         ];
         $request->validate($rules);
         $res = Supplier::where('id', $supplier->id)->update(
-            $request->all(['kode_supplier', 'nama_supplier', 'alamat', 'kota', 'no_telp']));
+            $request->all([
+                'kode', 'nama', 'alamat', 'kota', 'no_telp'
+            ])
+        );
         if (!$res) {
             return 0;
         }

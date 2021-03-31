@@ -16,12 +16,9 @@ class BarangController extends Controller {
 
     public function store(Request $request) {
         $rules = [
-            'kode_barang' => 'required|unique:barang',
-            'produk_id' => 'required',
+            'kode' => 'required|unique:barang',
             'nama' => 'required',
-            'satuan' => 'required',
-            'harga_jual' => 'required',
-            'stok' => 'required'
+            'satuan' => 'required'
         ];
         $request->validate($rules);
         $res = Barang::create($request->all());
@@ -33,16 +30,16 @@ class BarangController extends Controller {
     
     public function update(Request $request, Barang $barang) {
         $rules = [
-            'kode_barang' => 'required',
-            'produk_id' => 'required',
+            'kode' => 'required',
             'nama' => 'required',
             'satuan' => 'required',
-            'harga_jual' => 'required',
-            'stok' => 'required'
         ];
         $request->validate($rules);
         $res = Barang::where('id', $barang->id)->update(
-            $request->all());
+            $request->all([
+                'kode', 'nama', 'satuan'
+            ])
+        );
         if (!$res) {
             return 0;
         }

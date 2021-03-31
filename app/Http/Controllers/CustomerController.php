@@ -16,7 +16,7 @@ class CustomerController extends Controller {
 
     public function store(Request $request) {
         $rules = [
-            'kode_customer' => 'required|unique:customer',
+            'kode' => 'required|unique:customer',
             'nama' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
@@ -32,7 +32,7 @@ class CustomerController extends Controller {
     
     public function update(Request $request, Customer $customer) {
         $rules = [
-            'kode_customer' => 'required|unique:customer',
+            'kode' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
@@ -40,7 +40,10 @@ class CustomerController extends Controller {
         ];
         $request->validate($rules);
         $res = Customer::where('id', $customer->id)->update(
-            $request->all());
+            $request->all([
+                'kode', 'nama', 'alamat', 'no_telp', 'email'
+            ])
+        );
         if (!$res) {
             return 0;
         }

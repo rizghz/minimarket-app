@@ -16,7 +16,10 @@ class ProdukController extends Controller {
 
     public function store(Request $request) {
         $rules = [
+            'barang_id' => 'required',
             'nama' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required'
         ];
         $request->validate($rules);
         $res = Produk::create($request->all());
@@ -28,11 +31,17 @@ class ProdukController extends Controller {
     
     public function update(Request $request, Produk $produk) {
         $rules = [
+            'barang_id' => 'required',
             'nama' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required'
         ];
         $request->validate($rules);
         $res = Produk::where('id', $produk->id)->update(
-            $request->all());
+            $request->all([
+                'barang_id', 'nama', 'harga_jual', 'stok'
+            ])
+        );
         if (!$res) {
             return 0;
         }
