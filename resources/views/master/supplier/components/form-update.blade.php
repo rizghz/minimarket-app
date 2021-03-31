@@ -2,10 +2,9 @@
 <form class="form-horizontal" 
       action="{{ route('supplier.index') }}"
       method="post"
-      id="form-supplier-update">
+      id="form-update">
 
   @method('patch')
-  @csrf
 
   <!-- form kode supplier -->
   <div class="form-group row">
@@ -116,7 +115,7 @@
     <div class="col-6 offset-3">
 
       <!-- tombol submit -->
-      <button type="button" class="btn enigma-dark-bg-2 text-white rounded mr-2" id="btn-submit" data-form="#form-supplier-update">
+      <button type="button" class="btn enigma-dark-bg-2 text-white rounded mr-2" id="btn-submit" data-form="#form-update">
         <i class="fa fa-save mx-1"></i> Submit
       </button>
       <!-- akhir tombol submit -->

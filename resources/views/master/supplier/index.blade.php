@@ -37,8 +37,9 @@
   };
 
   $(() => {
-    let formTambah = $('#form-supplier-tambah').find('.form-control.input');
-    let formUpdate = $('#form-supplier-update').find('.form-control.input');
+
+    let formTambah = $('#form-tambah').find('.form-control.input');
+    let formUpdate = $('#form-update').find('.form-control.input');
     let dataId = "";
     
     $('body').on('click', '.tambah-trigger', function(e) {
@@ -59,15 +60,20 @@
     
     $('body').on('click', '#btn-submit', function(e) {
       e.preventDefault();
-      let form = $($(this).data('form'));
-      let res = request(`${form.attr('action')}/${dataId}`, 'post', form.serialize());
+
+      let form  = $($(this).data('form'));
+      let csrf  = $(`@csrf`).serialize();
+      let data  = `${form.serialize()}&${csrf}`;
+      let route = `${form.attr('action')}/${dataId}`;
+      let res = request(route, 'post', data);
+
       if (res['status'] == 200) {
         result = parseInt(res['responseText']);
         if (!result) {
-          alert('failed');
+          alert('gagal');
           location.reload();
         }
-        alert('sucess');
+        alert('berhasil');
         location.reload();
       } else {
         let error = res['responseJSON']['errors'];
@@ -75,6 +81,7 @@
           $('#invalid-feedback-' + buffer).text(`${error[buffer]}`);
         }
       }
+
     });
 
     $('body').on('click', '.delete-trigger', function(e) {
@@ -92,7 +99,7 @@
     "info": false,
     "paging": true,
     "lengthChange": false,
-    "pageLength": 11,
+    "pageLength": 25,
     "dom": 'lrtip',
     "language": {
         "emptyTable": "<div class='py-1 text-center'>Tidak ada data di dalam tabel</div>",

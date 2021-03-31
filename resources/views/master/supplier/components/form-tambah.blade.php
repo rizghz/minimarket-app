@@ -1,11 +1,8 @@
 <!-- form -->
 <form class="form-horizontal" 
-      action="{{ route('supplier.store') }}"
+      action="{{ route('supplier.index') }}"
       method="post"
-      id="form-supplier-tambah">
-
-  @method('post')
-  @csrf
+      id="form-tambah">
 
   <!-- form kode supplier -->
   <div class="form-group row">
@@ -116,7 +113,7 @@
     <div class="col-6 offset-3">
 
       <!-- tombol submit -->
-      <button type="button" class="btn enigma-dark-bg-2 text-white rounded mr-2" id="btn-submit" data-form="#form-supplier-tambah">
+      <button type="button" class="btn enigma-dark-bg-2 text-white rounded mr-2" id="btn-submit" data-form="#form-tambah">
         <i class="fa fa-save mx-1"></i> Submit
       </button>
       <!-- akhir tombol submit -->
