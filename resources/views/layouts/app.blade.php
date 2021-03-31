@@ -108,6 +108,18 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/main.js') }}"></script>
+    <script>
+      function request(route, type, data = null) {
+        let buffer = null;
+        buffer = $.ajax({
+          async: false,
+          url: route,
+          type: type,
+          data: data,
+        }).always(function(a, b, c) { console.log(c); });
+        return buffer;
+      };
+    </script>
     @stack('script')
     
   </body>
