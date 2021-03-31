@@ -11,7 +11,9 @@ class BarangController extends Controller {
 
     public function index() {
         $data = Barang::all();
-        return view('master.barang.index', ['data' => $data]);
+        return view('master.barang.index', [
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request) {

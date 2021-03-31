@@ -11,16 +11,18 @@ class CustomerController extends Controller {
 
     public function index() {
         $data = Customer::all();
-        return view('master.customer.index', ['data' => $data]);
+        return view('master.customer.index', [
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request) {
         $rules = [
-            'kode' => 'required|unique:customer',
-            'nama' => 'required',
-            'alamat' => 'required',
+            'kode'    => 'required|unique:customer',
+            'nama'    => 'required',
+            'alamat'  => 'required',
             'no_telp' => 'required',
-            'email' => 'required'
+            'email'   => 'required'
         ];
         $request->validate($rules);
         $res = Customer::create($request->all());
@@ -32,11 +34,11 @@ class CustomerController extends Controller {
     
     public function update(Request $request, Customer $customer) {
         $rules = [
-            'kode' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
+            'kode'    => 'required',
+            'nama'    => 'required',
+            'alamat'  => 'required',
             'no_telp' => 'required',
-            'email' => 'required'
+            'email'   => 'required'
         ];
         $request->validate($rules);
         $res = Customer::where('id', $customer->id)->update(

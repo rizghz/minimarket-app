@@ -11,20 +11,20 @@ class ProdukController extends Controller {
     public function __construct() { }
 
     public function index() {
-        $data = Produk::all();
+        $data   = Produk::all();
         $barang = Barang::all(['id', 'nama']);
         return view('master.produk.index', [
-            'data' => $data,
+            'data'   => $data,
             'barang' => $barang
         ]);
     }
 
     public function store(Request $request) {
         $rules = [
-            'barang_id' => 'required',
-            'nama' => 'required',
-            'harga_jual' => 'required',
-            'stok' => 'required'
+            'nama'       => 'required',
+            'stok'       => 'required',
+            'barang_id'  => 'required',
+            'harga_jual' => 'required'
         ];
         $request->validate($rules);
         $res = Produk::create($request->all());
@@ -36,10 +36,10 @@ class ProdukController extends Controller {
     
     public function update(Request $request, Produk $produk) {
         $rules = [
-            'barang_id' => 'required',
-            'nama' => 'required',
-            'harga_jual' => 'required',
-            'stok' => 'required'
+            'nama'       => 'required',
+            'stok'       => 'required',
+            'barang_id'  => 'required',
+            'harga_jual' => 'required'
         ];
         $request->validate($rules);
         $res = Produk::where('id', $produk->id)->update(

@@ -11,15 +11,17 @@ class SupplierController extends Controller {
 
     public function index() {
         $data = Supplier::all();
-        return view('master.supplier.index', ['data' => $data]);
+        return view('master.supplier.index', [
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request) {
         $rules = [
-            'kode' => 'required|unique:supplier',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'kota' => 'required',
+            'kode'    => 'required|unique:supplier',
+            'nama'    => 'required',
+            'kota'    => 'required',
+            'alamat'  => 'required',
             'no_telp' => 'required'
         ];
         $request->validate($rules);
@@ -32,10 +34,10 @@ class SupplierController extends Controller {
     
     public function update(Request $request, Supplier $supplier) {
         $rules = [
-            'kode' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'kota' => 'required',
+            'kode'    => 'required',
+            'nama'    => 'required',
+            'kota'    => 'required',
+            'alamat'  => 'required',
             'no_telp' => 'required'
         ];
         $request->validate($rules);

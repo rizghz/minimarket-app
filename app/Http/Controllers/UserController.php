@@ -11,7 +11,9 @@ class UserController extends Controller {
 
     public function index() {
         $data = User::all();
-        return view('master.user.index', ['data' => $data]);
+        return view('master.user.index', [
+            'data' => $data
+        ]);
     }
 
     public function store(Request $request) {
@@ -30,7 +32,7 @@ class UserController extends Controller {
         ];
         $request->validate($rules);
         $res = User::where('id', $user->id)->update(
-            $request->all());
+            $request->all([]));
         if (!$res) {
             return 0;
         }
