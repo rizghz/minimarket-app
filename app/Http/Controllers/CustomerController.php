@@ -11,8 +11,10 @@ class CustomerController extends Controller {
 
     public function index() {
         $data = Customer::all();
+        $kode = Customer::generateCode();
         return view('master.customer.index', [
-            'data' => $data
+            'data' => $data,
+            'kode' => $kode
         ]);
     }
 

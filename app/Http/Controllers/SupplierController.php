@@ -11,8 +11,10 @@ class SupplierController extends Controller {
 
     public function index() {
         $data = Supplier::all();
+        $kode = Supplier::generateCode();
         return view('master.supplier.index', [
-            'data' => $data
+            'data' => $data,
+            'kode' => $kode
         ]);
     }
 

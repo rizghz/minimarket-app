@@ -11,8 +11,10 @@ class BarangController extends Controller {
 
     public function index() {
         $data = Barang::all();
+        $kode = Barang::generateCode();
         return view('master.barang.index', [
-            'data' => $data
+            'data' => $data,
+            'kode' => $kode
         ]);
     }
 
