@@ -3,6 +3,8 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
@@ -35,3 +37,9 @@ Route::prefix('admin')->group(function() {
         ->except(['create', 'edit', 'show']);
 
 });
+
+Route::resource('pembelian', PembelianController::class)
+    ->except(['create', 'edit', 'show']);
+
+Route::resource('penjualan', PenjualanController::class)
+    ->except(['create', 'edit', 'show']);
