@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembelian;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class PembelianController extends Controller {
@@ -10,7 +11,10 @@ class PembelianController extends Controller {
     public function __construct() { }
     
     public function index() {
-        return view('transaksi.pembelian.index');
+        $supplier = Supplier::all(['id', 'nama']);
+        return view('transaksi.pembelian.index', [
+            'supplier' => $supplier
+        ]);
     }
 
     public function store(Pembelian $pembelian) {
