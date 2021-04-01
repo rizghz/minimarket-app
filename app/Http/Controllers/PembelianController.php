@@ -10,7 +10,7 @@ class PembelianController extends Controller {
     public function __construct() { }
     
     public function index() {
-        //
+        return view('transaksi.pembelian.index');
     }
 
     public function store(Pembelian $pembelian) {

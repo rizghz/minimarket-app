@@ -10,7 +10,7 @@ class PenjualanController extends Controller {
     public function __construct() { }
     
     public function index() {
-        //
+        return view('transaksi.penjualan.index');
     }
 
     public function store(Penjualan $penjualan) {
