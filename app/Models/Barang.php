@@ -17,4 +17,12 @@ class Barang extends Model {
         'satuan'
     ];
 
+    public static function generateCode() {
+        $kode = sprintf('B%03d', random_int(1, 999));
+        while (in_array($kode, Barang::all(['kode'])->toArray())) {
+            $kode = sprintf('B%03d', random_int(1, 999));
+        }
+        return $kode;
+    }
+
 }

@@ -19,4 +19,12 @@ class Supplier extends Model {
         'no_telp'
     ];
 
+    public static function generateCode() {
+        $kode = sprintf('S%03d', random_int(1, 999));
+        while (in_array($kode, Supplier::all(['kode'])->toArray())) {
+            $kode = sprintf('S%03d', random_int(1, 999));
+        }
+        return $kode;
+    }
+
 }

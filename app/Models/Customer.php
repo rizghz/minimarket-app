@@ -19,4 +19,12 @@ class Customer extends Model {
         'email'
     ];
 
+    public static function generateCode() {
+        $kode = sprintf('C%03d', random_int(1, 999));
+        while (in_array($kode, Customer::all(['kode'])->toArray())) {
+            $kode = sprintf('C%03d', random_int(1, 999));
+        }
+        return $kode;
+    }
+
 }
