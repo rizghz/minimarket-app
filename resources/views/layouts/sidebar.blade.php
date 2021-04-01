@@ -94,9 +94,17 @@
           </span>
         </a>
         <ul class="dropdown-menu">
-          <li><a class='sidebar-link text-white' href="basic-table.html">Penjualan</a></li>
-          <li><a class='sidebar-link text-white' href="datatable.html">Pembelian</a></li>
+          <li><a class='sidebar-link text-white' href="{{ route('pembelian.index') }}">Pembelian</a></li>
+          <li><a class='sidebar-link text-white' href="{{ route('penjualan.index') }}">Penjualan</a></li>
         </ul>
+      </li>
+
+      <li class="nav-item pY-5">
+        <a class='sidebar-link' href="">
+          <span class="icon-holder">
+            <i class="enigma-orange-text-1 ti-printer"></i>
+          </span><span class="title text-white">Laporan</span>
+        </a>
       </li>
       
     </ul>
