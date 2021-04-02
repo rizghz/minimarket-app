@@ -3,24 +3,21 @@
 @section('title', 'Mini Market - Barang')
 
 @section('content')
-
-  <button class="btn btn-lg enigma-dark-bg-1 text-white rounded mb-4 tambah-trigger"
-          data-target="#modal-tambah"
-          data-toggle="modal">
-    <i class="fa fa-plus mx-1"></i>
-    <span class="d-none d-md-inline">Tambah</span>
-  </button>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 p-20 mB-20">
-        @include('master.barang.components.dialog.tambah')
-        @include('master.barang.components.dialog.update')
-        @include('master.barang.components.table.barang')
-      </div>
+<button class="btn btn-lg enigma-dark-bg-1 text-white rounded mb-4 tambah-trigger"
+        data-target="#modal-tambah"
+        data-toggle="modal">
+  <i class="fa fa-plus mx-1"></i>
+  <span class="d-none d-md-inline">Tambah</span>
+</button>
+<div class="row">
+  <div class="col-md-12">
+    <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 p-20 mB-20">
+      @include('master.barang.components.dialog.tambah')
+      @include('master.barang.components.dialog.update')
+      @include('master.barang.components.table.barang')
     </div>
   </div>
-
+</div>
 @endsection
 
 @push('script')
