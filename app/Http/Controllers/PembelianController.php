@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Pembelian;
+use App\Models\Produk;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 
@@ -11,9 +13,15 @@ class PembelianController extends Controller {
     public function __construct() { }
     
     public function index() {
-        $supplier = Supplier::all(['id', 'nama']);
+        $kode     = Pembelian::generateCode();
+        $supplier = Supplier::all();
+        $barang   = Barang::all();
+        $produk   = Produk::all();
         return view('transaksi.pembelian.index', [
-            'supplier' => $supplier
+            'kode'     => $kode,
+            'supplier' => $supplier,
+            'barang'   => $barang,
+            'produk'   => $produk
         ]);
     }
 
