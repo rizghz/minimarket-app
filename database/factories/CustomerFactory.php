@@ -23,11 +23,11 @@ class CustomerFactory extends Factory {
 
     public function definition() {
         return [
-            'kode' => $this->faker->numberBetween(1, 99999),
-            'nama' => $this->faker->company,
-            'alamat' => $this->faker->address,
+            'kode'    => sprintf('C%03d', $this->faker->unique()->numberBetween(1, 999)),
+            'nama'    => $this->faker->company,
+            'alamat'  => $this->faker->address,
             'no_telp' => $this->faker->phoneNumber,
-            'email' => $this->faker->email
+            'email'   => $this->faker->email
         ];
     }
 

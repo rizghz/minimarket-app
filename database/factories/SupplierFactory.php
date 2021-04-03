@@ -23,10 +23,10 @@ class SupplierFactory extends Factory {
 
     public function definition() {
         return [
-            'kode' => $this->faker->numberBetween(1000, 100000),
-            'nama' => $this->faker->company,
-            'alamat' => $this->faker->address,
-            'kota' => $this->faker->city,
+            'kode'    => sprintf('S%03d', $this->faker->unique()->numberBetween(1, 999)),
+            'nama'    => $this->faker->company,
+            'alamat'  => $this->faker->address,
+            'kota'    => $this->faker->city,
             'no_telp' => $this->faker->phoneNumber
         ];
     }
