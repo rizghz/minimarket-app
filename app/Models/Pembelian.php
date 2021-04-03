@@ -19,6 +19,14 @@ class Pembelian extends Model {
         'user_id'
     ];
 
+    public static function generateCode() {
+        $kode = sprintf('P%08d', random_int(1, 99999999));
+        while (in_array($kode, Pembelian::all(['kode_masuk'])->toArray())) {
+            $kode = sprintf('P%08d', random_int(1, 99999999));
+        }
+        return $kode;
+    }
+
     public function supplier() {
         return $this->belongsTo(Supplier::class);
     }
