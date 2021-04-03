@@ -13,6 +13,7 @@
       <th data-orderable="false" class="pl-4 border-0">No</th>
       <th data-orderable="false" class="border-0">Kode</th>
       <th data-orderable="false" class="border-0">Nama</th>
+      <th data-orderable="false" class="border-0">Alamat</th>
       <th data-orderable="false" class="border-0">Kota</th>
       <th data-orderable="false" class="border-0">Nomor Telepon</th>
       <th data-orderable="false" class="border-0"></th>
@@ -40,6 +41,12 @@
         <!-- kolom nama supplier -->
         <td class="py-2 border-0">
           <div class="py-1">{{ $item->nama }}</div>
+        </td>
+        <!-- akhir kolom -->
+
+        <!-- kolom alamat -->
+        <td class="py-2 border-0">
+          <div class="py-1">{{ $item->alamat }}</div>
         </td>
         <!-- akhir kolom -->
 
