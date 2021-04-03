@@ -80,7 +80,7 @@ $(() => {
     } else {
       let error = res.responseJSON.errors;
       for (let buffer in error) {
-        $("#feedback-" + buffer).text(`${error[buffer]}`);
+        $("#feedback-" + buffer + ".invalid").text(error[buffer]);
       }
     }
   });
@@ -132,7 +132,7 @@ $(() => {
     dataId = "";
     let buffer = $(".invalid");
     for (let i = 0; i < buffer.length; i++) {
-      buffer.eq(i).text(null).trigger("change");
+      buffer.eq(i).text("");
     }
   });
 
