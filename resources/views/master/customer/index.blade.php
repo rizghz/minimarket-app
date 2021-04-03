@@ -14,7 +14,7 @@
     <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 p-20 mB-20">
       @include('master.customer.components.dialog.tambah')
       @include('master.customer.components.dialog.update')
-      @include('master.customer.components.table.barang')
+      @include('master.customer.components.table.customer')
     </div>
   </div>
 </div>
