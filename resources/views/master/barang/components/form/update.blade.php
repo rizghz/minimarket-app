@@ -13,20 +13,20 @@
     </label>
     <!-- akhir label form -->
 
-    <!-- input form -->
     <div class="col-sm-8">
+
+      <!-- input form -->
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text text-muted enigma-dark-bg-2 border-0">
             <i class="fa fa-pencil pl-1"></i>
           </span>
         </div>
-        <input id="kode" name="kode" class="form-control input text-white border-0" 
+        <input id="kode" name="kode" type="text" readonly
+               class="form-control input text-white border-0" 
                style="background-color: #3B4252" 
                placeholder="kode barang" 
-               autocomplete="off"
-               type="text"
-               readonly>
+               autocomplete="off">
       </div>
       <!-- akhir input form -->
 
@@ -35,6 +35,7 @@
       <!-- akhir feedback -->
 
     </div>
+
   </div>
   <!-- akhir form kode barang-->
 
@@ -47,27 +48,29 @@
     </label>
     <!-- akhir label form -->
 
-    <!-- input form -->
     <div class="col-sm-8">
+
+      <!-- input form -->
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text text-muted enigma-dark-bg-2 border-0">
             <i class="fa fa-pencil pl-1"></i>
           </span>
         </div>
-        <input id="nama" name="nama" class="form-control input text-white border-0" 
+        <input id="nama" name="nama" type="text"
+               class="form-control input text-white border-0" 
                style="background-color: #3B4252"
                placeholder="nama" 
-               autocomplete="off"
-               type="text">
+               autocomplete="off">
       </div>
       <!-- akhir input form -->
 
       <!-- feedback -->
-      <div id="feedback-nama" class="invalid alert-text text-sm pt-2"></div>
+      <div id="feedback-nama" class="invalid text-sm pt-2"></div>
       <!-- akhir feedback -->
 
     </div>
+
   </div>
   <!-- akhir form nama barang-->
 
@@ -80,19 +83,20 @@
     </label>
     <!-- akhir label form -->
 
-    <!-- input form -->
     <div class="col-sm-8">
+
+      <!-- input form -->
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text text-muted enigma-dark-bg-2 border-0">
             <i class="fa fa-pencil pl-1"></i>
           </span>
         </div>
-        <input id="satuan" name="satuan" class="form-control input text-white border-0" 
+        <input id="satuan" name="satuan" type="text"
+               class="form-control input text-white border-0" 
                style="background-color: #3B4252"
                placeholder="satuan" 
-               autocomplete="off"
-               type="text">
+               autocomplete="off">
       </div>
       <!-- akhir input form -->
 
@@ -101,6 +105,7 @@
       <!-- akhir feedback -->
 
     </div>
+
   </div>
   <!-- akhir form satuan barang -->
 
@@ -109,16 +114,16 @@
     <div class="col-6 offset-3">
 
       <!-- tombol submit -->
-      <button id="btn-submit" class="btn enigma-dark-bg-2 text-white rounded mr-2"
-              type="button">
+      <button id="btn-submit" type="button"
+              class="btn enigma-dark-bg-2 text-white rounded mr-2">
         <i class="fa fa-save mx-1"></i> Submit
       </button>
       <!-- akhir tombol submit -->
 
       <!-- tombol batal -->
-      <button class="btn btn-danger rounded"
-              data-dismiss="modal"
-              type="button">
+      <button type="button"
+              class="btn btn-danger rounded"
+              data-dismiss="modal">
         <i class="fa fa-chevron-left mx-1"></i> Batal
       </button>
       <!-- akhir tombol batal -->
