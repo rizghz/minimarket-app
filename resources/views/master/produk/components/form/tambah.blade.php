@@ -53,7 +53,7 @@
       <!-- input form -->
       <div class="input-group">
         <select id="barang_id" name="barang_id"
-                class="form-control custom-select input enigma-dark-bg-2 text-white">
+                class="form-control custom-select input enigma-dark-bg-2 text-white border-0">
           @foreach ($barang as $data)
             <option value="{{ $data->id }}">{{ $data->nama }}</option>
           @endforeach

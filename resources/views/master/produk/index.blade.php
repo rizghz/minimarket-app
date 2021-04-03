@@ -80,7 +80,7 @@ $(() => {
     } else {
       let error = res.responseJSON.errors;
       for (let buffer in error) {
-        $("#feedback-" + buffer).text(`${error[buffer]}`);
+        $("#feedback-" + buffer + ".invalid").text(error[buffer]);
       }
     }
   });

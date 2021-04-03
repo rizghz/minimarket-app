@@ -75,6 +75,7 @@
                   data-toggle="modal"
                   data-target="#modal-update"
                   data-id="{{ $item->id }}"
+                  data-barang_id="{{ $item->barang->id }}"
                   data-nama="{{ $item->nama }}"
                   data-harga_jual="{{ $item->harga_jual }}"
                   data-stok="{{ $item->stok }}">
