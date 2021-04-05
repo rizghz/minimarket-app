@@ -23,7 +23,6 @@
   <tbody>
     @foreach ($data as $item)
       <tr>
-
         <!-- kolom nomor -->
         <td class="py-2 border-0">
           <div class="py-1 pl-3">{{ $loop->iteration }}</div>
