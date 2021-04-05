@@ -119,6 +119,20 @@
         }).always(function(a, b, c) { console.log(c); });
         return buffer;
       };
+      function IntToRp(n) {
+        let rupiah = '';		
+	      let rev = n.toString().split('').reverse().join('');
+	      for (let i = 0; i < rev.length; i++) {
+          if (i % 3 == 0) {
+            rupiah += rev.substr(i,3)+'.';
+          }
+        }
+	      rupiah = rupiah.split('', rupiah.length - 1).reverse().join('');
+        return `Rp${rupiah.length < 1 ? "0" : rupiah},-`;
+      }
+      function RpToInt(n) {
+        return parseInt(n.replace(/,.*|[^0-9]/g, ''), 10);
+      }
       const sweetalert = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success mx-1',
