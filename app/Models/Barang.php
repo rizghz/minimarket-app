@@ -25,4 +25,8 @@ class Barang extends Model {
         return $kode;
     }
 
+    public function produk() {
+        return $this->hasMany(Produk::class);
+    }
+
 }
