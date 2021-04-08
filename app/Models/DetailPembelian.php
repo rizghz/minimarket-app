@@ -13,7 +13,7 @@ class DetailPembelian extends Model {
 
     protected $fillable = [
         'pembelian_id',
-        'produk_id',
+        'barang_id',
         'harga_beli',
         'jumlah',
         'sub_total'
@@ -23,8 +23,8 @@ class DetailPembelian extends Model {
         return $this->belongsTo(Pembelian::class);
     }
 
-    public function produk() {
-        return $this->belongsTo(Produk::class);
+    public function barang() {
+        return $this->belongsTo(Barang::class);
     }
 
 }

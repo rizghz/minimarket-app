@@ -21,7 +21,11 @@ class Pembelian extends Model {
 
     public static function generateCode() {
         $kode = sprintf('P%08d', random_int(1, 99999999));
-        while (in_array($kode, Pembelian::all(['kode_masuk'])->toArray())) {
+        $temp = [];
+        foreach (Pembelian::all(["kode_masuk"]) as $item) {
+            array_push($temp, $item->kode_masuk);
+        }
+        while (in_array($kode, $temp, true)) {
             $kode = sprintf('P%08d', random_int(1, 99999999));
         }
         return $kode;

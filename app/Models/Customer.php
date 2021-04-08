@@ -21,7 +21,11 @@ class Customer extends Model {
 
     public static function generateCode() {
         $kode = sprintf('C%03d', random_int(1, 999));
-        while (in_array($kode, Customer::all(['kode'])->toArray())) {
+        $temp = [];
+        foreach (Customer::all(["kode"]) as $item) {
+            array_push($temp, $item->kode);
+        }
+        while (in_array($kode, $temp, true)) {
             $kode = sprintf('C%03d', random_int(1, 999));
         }
         return $kode;

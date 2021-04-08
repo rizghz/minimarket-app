@@ -19,6 +19,18 @@ class Penjualan extends Model {
         'user_id'
     ];
 
+    public static function generateNoFaktur() {
+        $kode = sprintf('%08d', random_int(1, 99999999));
+        $temp = [];
+        foreach (Penjualan::all(["no_faktur"]) as $item) {
+            array_push($temp, $item->no_faktur);
+        }
+        while (in_array($kode, $temp, true)) {
+            $kode = sprintf('%08d', random_int(1, 99999999));
+        }
+        return $kode;
+    }
+
     public function customer() {
         return $this->belongsTo(Customer::class);
     }

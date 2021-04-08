@@ -21,7 +21,11 @@ class Supplier extends Model {
 
     public static function generateCode() {
         $kode = sprintf('S%03d', random_int(1, 999));
-        while (in_array($kode, Supplier::all(['kode'])->toArray())) {
+        $temp = [];
+        foreach (Supplier::all(["kode"]) as $item) {
+            array_push($temp, $item->kode);
+        }
+        while (in_array($kode, $temp, true)) {
             $kode = sprintf('S%03d', random_int(1, 999));
         }
         return $kode;
