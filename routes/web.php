@@ -8,32 +8,51 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+Auth::routes();
+
+Route::get('/', function() {
+    return redirect(route('login'));
+})->name('welcome');
+
+Route::get('home', [IndexController::class, 'index'])
+    ->name('home')
+    ->middleware('auth');
 
 Route::prefix('admin')->group(function() {
 
-    Route::get('home', [IndexController::class, 'index'])
-        ->name('home');
-    
     Route::resource('produk', ProdukController::class)
-        ->except(['create', 'edit', 'show']);
+        ->except(['create', 'edit', 'show'])
+        ->middleware('auth');
     
     Route::resource('barang', BarangController::class)
-        ->except(['create', 'edit', 'show']);
+        ->except(['create', 'edit', 'show'])
+        ->middleware('auth');
     
     Route::resource('supplier', SupplierController::class)
-        ->except(['create', 'edit', 'show']);
+        ->except(['create', 'edit', 'show'])
+        ->middleware('auth');
     
     Route::resource('customer', CustomerController::class)
-        ->except(['create', 'edit', 'show']);
+        ->except(['create', 'edit', 'show'])
+        ->middleware('auth');
     
     Route::resource('user', UserController::class)
-        ->except(['create', 'edit', 'show']);
+        ->except(['create', 'edit', 'show'])
+        ->middleware('auth');
 
 });
 
 Route::resource('pembelian', PembelianController::class)
-    ->except(['create', 'edit', 'show']);
+    ->except(['create', 'edit', 'show'])
+    ->middleware('auth');
 
 Route::resource('penjualan', PenjualanController::class)
-    ->except(['create', 'edit', 'show']);
+    ->except(['create', 'edit', 'show'])
+    ->middleware('auth');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get("test", [IndexController::class, "test"])->name("test");
