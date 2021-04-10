@@ -1,17 +1,17 @@
-<!-- dialog update data supplier -->
-<div id="modal-update" class="modal fade"
+<!-- dialog tambah data supplier -->
+<div id="modal-form" class="modal fade"
      aria-labelledby="modal-label"
-     aria-hidden="true" 
+     aria-hidden="true"
      tabindex="-1"
      role="dialog">
 
   <div class="modal-dialog modal-lg">
     <div class="modal-content enigma-dark-bg-1 shadow-lg">
-      
+
       <!-- modal header -->
-      <div class="modal-header" style="border-color: #3B4252">
-        <h5 id="modal-label" class="modal-title">Edit Data Supplier</h5>
-        <button class="btn m-0 px-2 py-1 enigma-dark-bg-1 border-0 text-white" 
+      <div class="modal-header">
+        <h5 id="modal-label" class="modal-title text-white"></h5>
+        <button class="btn m-0 px-2 py-1 enigma-dark-bg-1 text-white" 
                 data-dismiss="modal"
                 type="button">
           <i class="ti-close"></i>
@@ -21,7 +21,7 @@
 
       <!-- modal body -->
       <div class="modal-body my-3">
-        @include('master.supplier.components.form.update')
+        @include('master.supplier.components.form')
       </div>
       <!-- akhir modal body -->
 
