@@ -1,5 +1,5 @@
 <!-- table data produk -->
-<table class="table table-sm table-striped enigma-dark-bg-1 text-white">
+<table class="table table-striped enigma-dark-bg-1 text-white">
 
   <!-- table header -->
   <thead>
