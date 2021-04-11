@@ -3,21 +3,23 @@
 @section('title', 'Mini Market - Customer')
 
 @section('content')
-<button class="btn btn-lg enigma-dark-bg-1 text-white rounded mb-4 tambah-trigger"
-        data-target="#modal-tambah"
+
+<button class="btn btn-lg enigma-dark-bg-1 text-white mb-4 trigger"
+        data-mode="tambah"
+        data-target="#modal-form"
         data-toggle="modal">
-  <i class="fa fa-plus mx-1"></i>
-  <span class="d-none d-md-inline">Tambah</span>
+  <i class="ti-plus mx-1"></i>
 </button>
+
 <div class="row">
   <div class="col-md-12">
-    <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 p-20 mB-20">
-      @include('master.customer.components.dialog.tambah')
-      @include('master.customer.components.dialog.update')
-      @include('master.customer.components.table.customer')
+    <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 px-0 pt-1 pb-3 mB-10">
+      @include('master.customer.components.dialog')
+      @include('master.customer.components.table')
     </div>
   </div>
 </div>
+
 @endsection
 
 @push('script')
@@ -25,27 +27,33 @@
 $(() => {
 
   let dataId = "";
+  let methodForm = "";
+  const input = $("#form-customer").find(".input");
 
-  const input = {
-    tambah: $("#form-tambah").find(".input"),
-    update: $("#form-update").find(".input")
-  };
-
-  $("body").on("click", ".tambah-trigger", function(e) {
-    e.preventDefault();
-    for (let i = 0; i < input.tambah.length; i++) {
-      input.tambah.eq(i).val(null).trigger("change");
+  $("body").on("click", ".trigger", function(event) {
+    event.preventDefault();
+    let mode = $(this).data("mode");
+    if (mode == "tambah") {
+      $("#modal-label").text("Tambah Data Customer");
+      methodForm = "post";
+      for (let i = 0; i < input.length; i++) {
+        if (input.eq(i).attr("id") == "kode") {
+          input.eq(i).val("{{ $kode }}").trigger("change");
+          continue;
+        }
+        input.eq(i).val(null).trigger("change");
+      }
     }
-  });
-
-  $("body").on("click", ".update-trigger", function(e) {
-    e.preventDefault();
-    let data = $(this).data();
-    dataId = data.id;
-    for (let i = 0; i < input.update.length; i++) {
-      input.update.eq(i).val(
-        data[input.update.eq(i).attr("name")]
-      ).trigger("change");
+    if (mode == "edit") {
+      $("#modal-label").text("Edit Data Customer");
+      methodForm = "patch";
+      let data = $(this).data('customer');
+      dataId = data.id;
+      for (let i = 0; i < input.length; i++) {
+        input.eq(i).val(
+          data[input.eq(i).attr("name")]
+        ).trigger("change");
+      }
     }
   });
 
@@ -54,7 +62,7 @@ $(() => {
     let form  = $(this)[0].form;
     let data  = $(form).serialize();
     let route = form.action + "/" + dataId;
-    let res   = request(route, "post", data);
+    let res   = request(route, methodForm, data);
     if (res.status == 200) {
       result = parseInt(res.responseText);
       if (!result) {
@@ -85,8 +93,8 @@ $(() => {
     }
   });
 
-  $("body").on("click", ".delete-trigger", function(e) {
-    e.preventDefault();
+  $("body").on("click", ".delete", function(event) {
+    event.preventDefault();
     dataId    = $(this).data("id");
     let csrf  = $(`@csrf`).serialize();
     let route = "{{ route('customer.index') }}";
@@ -125,6 +133,7 @@ $(() => {
           });
         }
       }
+      dataId = "";
     });
   });
 
@@ -132,7 +141,7 @@ $(() => {
     dataId = "";
     let buffer = $(".invalid");
     for (let i = 0; i < buffer.length; i++) {
-      buffer.eq(i).text(null).trigger("change");
+      buffer.eq(i).text("");
     }
   });
 
@@ -145,8 +154,8 @@ $(() => {
     "language" : {
       "emptyTable": "<div class='py-1 text-center'>Tidak ada data di dalam tabel</div>",
       "paginate": {
-        "previous": "<i class='ti-angle-left'></i>",
-          "next": "<i class='ti-angle-right'></i>"
+        "previous": "<i class='ti-angle-left text-white'></i>",
+          "next": "<i class='ti-angle-right text-white'></i>"
         }
     },
     "createdRow" : function(r) {

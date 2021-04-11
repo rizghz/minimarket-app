@@ -1,7 +1,6 @@
 <!-- form tambah data customer -->
-<form id="form-tambah" class="form-horizontal">
+<form id="form-customer" class="form-horizontal">
 
-  @method("post")
   @csrf
 
   <!-- form kode customer -->
@@ -23,7 +22,7 @@
           </span>
         </div>
         <input id="kode" name="kode" type="text" readonly
-               class="form-control text-white border-0" 
+               class="form-control input text-white border-0" 
                style="background-color: #3B4252"
                placeholder="kode customer"
                autocomplete="off"
