@@ -109,6 +109,7 @@
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/main.js') }}"></script>
     <script>
+
       function request(route, type, data = null) {
         let buffer = null;
         buffer = $.ajax({
@@ -119,6 +120,7 @@
         }).always(function(a, b, c) { console.log(c); });
         return buffer;
       };
+
       function IntToRp(n) {
         let rupiah = '';		
 	      let rev = n.toString().split('').reverse().join('');
@@ -130,16 +132,48 @@
 	      rupiah = rupiah.split('', rupiah.length - 1).reverse().join('');
         return `Rp${rupiah.length < 1 ? "0" : rupiah},-`;
       }
+
       function RpToInt(n) {
         return parseInt(n.replace(/,.*|[^0-9]/g, ''), 10);
       }
+
       const sweetalert = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success mx-1',
-          cancelButton: 'btn btn-danger mx-1'
+          popup: "enigma-dark-bg-1 text-white",
+          title: "enigma-dark-bg-1 text-white",
+          content: "enigma-dark-bg-1 text-white",
+          confirmButton: 'btn enigma-dark-bg-2 text-white px-3 mx-2',
+          cancelButton: 'btn btn-danger px-3 mx-2'
         },
         buttonsStyling: false
       });
+
+      function swalert(icon, title, text) {
+        sweetalert.fire({
+          "icon"  : icon,
+          "title" : title,
+          "text"  : text
+        }).then((res) => {
+          if (sweetalert.DismissReason.backdrop) {
+            location.reload();
+          }
+        });
+      }
+
+      function swconfirm(callback) {
+        sweetalert.fire({
+          "icon"  : "warning",
+          "title" : "Apakah kamu yakin?",
+          "text"  : "Kamu tidak akan dapat mengembalikan data ini!",
+          "confirmButtonText"  : "Ya, hapus!",
+          "showCancelButton"   : true
+        }).then((res) => {
+          if (res.isConfirmed) {
+            callback();
+          }
+        });
+      }
+
     </script>
     @stack('script')
     
