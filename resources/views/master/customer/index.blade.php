@@ -66,25 +66,12 @@ $(() => {
     if (res.status == 200) {
       result = parseInt(res.responseText);
       if (!result) {
-        sweetalert.fire({
-          title : "Gagal",
-          text  : "Gagal",
-          icon  : "failed",
-        }).then((result) => {
-          if (sweetalert.DismissReason.backdrop) {
-            location.reload();
-          }
-        });
+        $(".modal").modal("hide");
+        swalert("error", "", "Gagal");
+      } else {
+        $(".modal").modal("hide");
+        swalert("success", "", "Berhasil");
       }
-      sweetalert.fire({
-        title : "Berhasil",
-        text  : "Berhasil",
-        icon  : "success",
-      }).then((result) => {
-        if (sweetalert.DismissReason.backdrop) {
-          location.reload();
-        }
-      });
     } else {
       let error = res.responseJSON.errors;
       for (let buffer in error) {
@@ -98,42 +85,19 @@ $(() => {
     dataId    = $(this).data("id");
     let csrf  = $(`@csrf`).serialize();
     let route = "{{ route('customer.index') }}";
-    Swal.fire({
-      title : "Apakah kamu yakin?",
-      text  : "Kamu tidak akan dapat mengembalikan data ini!",
-      icon  : "warning",
-      showCancelButton   : true,
-      confirmButtonColor : "#3085d6",
-      cancelButtonColor  : "#d33",
-      confirmButtonText  : "Ya, hapus!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        let res = request(`${route}/${dataId}`, "delete", csrf);
-        if (res.status == 200) {
-          result = parseInt(res.responseText);
-          if (!result) {
-            sweetalert.fire({
-              title : "Gagal",
-              text  : "Gagal",
-              icon  : "failed",
-            }).then((result) => {
-              if (sweetalert.DismissReason.backdrop) {
-                location.reload();
-              }
-            });
-          }
-          sweetalert.fire({
-            title : "Berhasil",
-            text  : "Berhasil",
-            icon  : "success",
-          }).then((result) => {
-            if (sweetalert.DismissReason.backdrop) {
-              location.reload();
-            }
-          });
+    swconfirm(() => {
+      let res = request(`${route}/${dataId}`, "delete", csrf);
+      dataId = "";
+      if (res.status == 200) {
+        result = parseInt(res.responseText);
+        if (!result) {
+          $(".modal").modal("hide");
+          swalert("error", "", "Gagal");
+        } else {
+          $(".modal").modal("hide");
+          swalert("success", "", "Berhasil");
         }
       }
-      dataId = "";
     });
   });
 
