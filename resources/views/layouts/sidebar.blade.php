@@ -100,7 +100,23 @@
       </li>
 
       <li class="nav-item pY-5">
-        <a class='sidebar-link' href="">
+        <a class='sidebar-link' href="{{ route('penarikan.index') }}">
+          <span class="icon-holder">
+            <i class="enigma-orange-text-1 ti-folder"></i>
+          </span><span class="title text-white">Penarikan Barang</span>
+        </a>
+      </li>
+      
+      <li class="nav-item pY-5">
+        <a class='sidebar-link' href="{{ route('grafik.data') }}">
+          <span class="icon-holder">
+            <i class="enigma-orange-text-1 ti-bar-chart"></i>
+          </span><span class="title text-white">Grafik</span>
+        </a>
+      </li>
+
+      <li class="nav-item pY-5">
+        <a class='sidebar-link' href="{{ route('home') }}">
           <span class="icon-holder">
             <i class="enigma-orange-text-1 ti-printer"></i>
           </span><span class="title text-white">Laporan</span>
