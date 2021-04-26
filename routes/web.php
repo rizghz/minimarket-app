@@ -71,6 +71,10 @@ Route::get('grafik', [GrafikController::class, 'index'])
       ->name('grafik.data')
       ->middleware('auth');
 
+Route::get('grafik/penjualan', [GrafikController::class, 'getSumPenjualan'])
+      ->name('grafik.jumlah.penjualan')
+      ->middleware('auth');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get("test", [IndexController::class, "test"])->name("test");
