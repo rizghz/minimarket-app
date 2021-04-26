@@ -18,6 +18,8 @@ class UserController extends Controller {
 
     public function store(Request $request) {
         $rules = [
+            'name'  => 'required',
+            'email' => 'required'
         ];
         $request->validate($rules);
         $res = User::create($request->all());
@@ -29,10 +31,14 @@ class UserController extends Controller {
     
     public function update(Request $request, User $user) {
         $rules = [
+            'name'  => 'required',
+            'email' => 'required'
         ];
         $request->validate($rules);
         $res = User::where('id', $user->id)->update(
-            $request->all([]));
+            $request->all([
+                'name', 'email'
+            ]));
         if (!$res) {
             return 0;
         }
