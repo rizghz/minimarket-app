@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PenarikanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
@@ -52,6 +54,22 @@ Route::resource('pembelian', PembelianController::class)
 Route::resource('penjualan', PenjualanController::class)
     ->except(['create', 'edit', 'show'])
     ->middleware('auth');
+
+Route::resource('penarikan', PenarikanController::class)
+    ->except(['create', 'edit', 'show'])
+    ->middleware('auth');
+
+Route::get('penarikan/export/excel', [PenarikanController::class, 'excel'])
+      ->name('penarikan.export.excel')
+      ->middleware('auth');
+
+Route::get('penarikan/export/pdf', [PenarikanController::class, 'pdf'])
+      ->name('penarikan.export.pdf')
+      ->middleware('auth');
+
+Route::get('grafik', [GrafikController::class, 'index'])
+      ->name('grafik.data')
+      ->middleware('auth');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
