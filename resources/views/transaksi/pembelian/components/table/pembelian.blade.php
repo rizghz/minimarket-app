@@ -1,14 +1,14 @@
-<table id="table-pembelian" class="table table-striped enigma-dark-bg-1 text-white border-0">
+<table id="table-pembelian" class="table table-striped enigma-dark-bg-1 text-white">
 
   <thead>
     <tr>
-      <th data-orderable="false" class="pl-4 border-0">Kode Barang</th>
-      <th data-orderable="false" class="border-0">Nama Barang</th>
-      <th data-orderable="false" class="border-0">Nama Produk</th>
-      <th data-orderable="false" class="border-0">Harga</th>
-      <th data-orderable="false" class="border-0">Qty</th>
-      <th data-orderable="false" class="border-0">Total</th>
-      <th data-orderable="false" class="border-0"></th>
+      <th data-orderable="false" class="border-0 pY-20 pl-4">KODE BARANG</th>
+      <th data-orderable="false" class="border-0 pY-20">NAMA PRODUK</th>
+      <th data-orderable="false" class="border-0 pY-20">BARANG</th>
+      <th data-orderable="false" class="border-0 pY-20">HARGA</th>
+      <th data-orderable="false" class="border-0 pY-20">QTY</th>
+      <th data-orderable="false" class="border-0 pY-20">TOTAL</th>
+      <th data-orderable="false" class="border-0 pY-20">AKSI</th>
     </tr>
   </thead>
   

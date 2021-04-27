@@ -3,6 +3,7 @@
 @section('title', 'Mini Market - Pembelian')
 
 @section('content')
+
 <div class="row">
   <div class="col-md-12">
     <div class="card enigma-dark-bg-1">
@@ -13,9 +14,10 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-12">
-    <div class="enigma-dark-bg-1 bgc-white bd bdrs-3 p-20 mY-30">
+    <div class="enigma-dark-bg-1 shadow bgc-white bd bdrs-3 px-0 pt-1 pb-3 mY-35">
       @include('transaksi.pembelian.components.dialog.barang')
       <form class="form-pembelian">
         @include('transaksi.pembelian.components.table.pembelian')
@@ -23,6 +25,7 @@
     </div>
   </div>
 </div>
+
 <div class="row mr-2">
   <div class="col-md-12">
     <form class="form-pembelian">
@@ -47,6 +50,7 @@
     </form>
   </div>
 </div>
+
 <div class="row mr-2">
   <div class="col-md-12">
     <div class="form-group row">
@@ -56,6 +60,7 @@
     </div>
   </div>
 </div>
+
 @endsection
 
 @push('script')
@@ -75,54 +80,54 @@ $(() => {
     e.preventDefault();
     
     $(".modal").modal("hide");
+    $(".modal-backdrop").fadeOut();
     
     let data = {
-      barang: $(this).data("barang"),
-      produk: $(this).data("produk")
+      produk: $(this).data("produk"),
+      barang: $(this).data("barang")
     };
-    
-    
-    let kode    = `<div class="py-2 pl-3 data">${data.barang.kode}</div>`;
-    let nama    = `<div class="py-2 data">${data.barang.nama}</div>`;
-    let produk  = `<div class="py-1">
-                     <select id="produk_id" name="produk_id[]"
+
+    let kode    = `<div class="py-2 pl-3 data">${data.produk.kode}</div>`;
+    let nama    = `<div class="py-2 data">${data.produk.nama}</div>`;
+    let barang  = `<div class="py-1">
+                     <select id="barang_id" name="barang_id[]"
                              class="form-control custom-select input enigma-dark-bg-2 text-white border-0 data">`
-                       for (let i = 0; i < data.produk.length; i++) {
-                         produk += `<option value="${data.produk[i].id}" data-harga="${data.produk[i].harga_jual}">
-                                      ${data.produk[i].nama}
+                       for (let i = 0; i < data.barang.length; i++) {
+                         barang += `<option value="${data.barang[i].id}" data-harga="${data.barang[i].harga_jual}">
+                                      ${data.barang[i].nama}
                                     </option>`
                        }
-                       produk += `</select>
+                       barang += `</select>
                                  </div>`;
     let harga = "";
-    if (data.produk[0] == null) {
+    if (data.barang[0] == null) {
       harga = `<div id="harga" class="py-2 data">0</div>`;
     } else {
-      harga = `<div id="harga" class="py-2 data">${data.produk[0].harga_jual}</div>`;
+      harga = `<div id="harga" class="py-2 data">${data.barang[0].harga_jual}</div>`;
     }
     let qty = `<div class="py-1">
                  <input type="number" name="qty[]" id="qty" value="1" min="1"
                         class="form-control enigma-dark-bg-2 border-0 text-white data">
                </div>`;
     let total = "";
-    if (data.produk[0] == null) {
+    if (data.barang[0] == null) {
       total   = `<div id="total" class="py-2 data">0</div>`;
     } else {
-      total   = `<div id="total" class="py-2 data">${data.produk[0].harga_jual}</div>`;
+      total   = `<div id="total" class="py-2 data">${data.barang[0].harga_jual}</div>`;
     }
     let bDelete = `<div class="py-2">
                      <button class='btn btn-danger btn-sm px-2 py-1 rounded' 
-                             id='delete-barang'>
+                             id='delete-produk'>
                        <i class='fa fa-times'></i>
                      </button>
                    </div>`;
 
     let t = $(table.context[1].nTable).DataTable();
     t.row.add([
-      kode, nama, produk, harga, qty, total, bDelete
+      kode, nama, barang, harga, qty, total, bDelete
     ]).draw();
 
-    totalHarga += data.produk[0].harga_jual;
+    totalHarga += data.barang[0].harga_jual;
     $('#total_harga').val(totalHarga);
 
     // let total_harga = t.column(5).data();
@@ -134,7 +139,7 @@ $(() => {
     
   });
 
-  $('body').on('click', '#delete-barang', function(e) {
+  $('body').on('click', '#delete-produk', function(e) {
     e.preventDefault();
     let baris = $(this).parent('div').parent('td').parent('tr');
     let t = $(table.context[1].nTable).DataTable();
@@ -165,7 +170,7 @@ $(() => {
     subTotal($(this));
   });
 
-  $('body').on('change', '#produk_id', function(e) {
+  $('body').on('change', '#barang_id', function(e) {
     let column = $(this).closest('tr').find('td');
     let harga = $(this).find('option:selected').data('harga');
     column.find('#harga').text(harga);
@@ -198,6 +203,18 @@ $(() => {
     }
   });
 
+  $('#supplier_id').select2({
+    width: "100%",
+    selectionCssClass: "enigma-dark-bg-2 text-white border-0",
+    dropdownCssClass: "enigma-dark-bg-2 text-white border-0"
+  });
+  
+  $('.select2-selection__rendered').addClass('text-white');
+  
+  $('body').on('click', '.select2-selection', function(e) {
+    $('.select2-search__field').addClass('enigma-dark-bg-3 text-white border-0');
+  });
+  
 });
 </script>
 @endpush

@@ -54,9 +54,11 @@
 
     <!-- input form -->
     <div class="col-sm-4">
-      <div class="input-group">
+      <div class="input-group py-1">
         <select id="supplier_id" name="supplier_id"
-                class="form-control custom-select input enigma-dark-bg-2 border-0 text-white data">
+                class="form-control input enigma-dark-bg-2 border-0 text-white data"
+                data-placeholder="pilih supplier">
+          <option value=""></option>
           @foreach ($supplier as $data)
             <option value="{{ $data->id }}">{{ $data->nama }}</option>
           @endforeach
